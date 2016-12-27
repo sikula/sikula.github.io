@@ -51,6 +51,62 @@
 			<h1>Test Content</h1>
 		</div> <!--/#entry-content-->
 	</div> <!--/#main-->
+</div>  <!--/#post--><div class="post type-post status-publish format-standard hentry category-general" id="post">
+	<div class="entry-meta">
+		<div class="date"><a href="https://sikula.github.io/the-hackers-sandbox-destiny.html">Mon 26 December 2016</a></div>
+		<span class="byline">By <a href="https://sikula.github.io/author/peter-sikula-thomas-zuk.html">Peter Sikula, Thomas Zuk</a></span>
+			<span class="cat-links"><a href="https://sikula.github.io/category/ctf.html" title="View all posts in CTF" rel="category tag">CTF</a></span>
+	</div> <!-- /#entry-meta -->
+	<div class="main">
+		<h2 class="entry-title">
+			<a href="https://sikula.github.io/the-hackers-sandbox-destiny.html" title="Permalink to The Hackers Sandbox: Destiny" rel="bookmark">The Hackers Sandbox: Destiny</a>
+		</h2>
+		<div class="entry-content">
+			<h3>The Hackers Sandbox Walkthrough: Destiny (Default Mission Package)</h3>
+
+<p>The Hackers Sandbox is a interactive hacking simulator. It is a standalone application that can be run on Windows, Linux and OSX that is used to emulate Virtual Machines. From their website: "It features an advanced and scriptable gaming engine which is extendable using Lua Script. You can create your own playable mission-packs to share with your friends or the community."
+<br>This walkthrough will cover the default mission pack called Destiny that comes with The Hackers Sandbox.</p>
+
+<p>You find more about The Hackers Sandbox on its official website: <a href src="http://www.flyingmonkeyarmy.com/">www.flyingmonkeyarmy.com</a></p>
+
+<!-- ### Level 1 ### -->
+
+<p><br>
+<h2>Level 1: area6</h2>
+<p>First step is straight forward, login with the credentials provided.</p>
+Username = m101
+<br>
+Password = area6
+<br></p>
+<p>Using the <i>ls</i> command we can see there is a file, using <i>cat welcome</i> to view the contents of the file we learn the goal of this level is to gain root access.  Lets being by probing around and seeing which directories and file we have access to. On this machine there are 9 primary directories.</p>
+
+<p><i><b>Figure 1.1: Output of the command 'ls /'</b></i>
+<br>
+<img src="/images/level1_1.png" /></p>
+<p>Next lets go through each of the directories and any sub-directories and try and see the contents of any files or interesting commands.  The first directory <i>/bin</i> contains 3 more commands, <i>nmap, wget, wwwlook</i>.  Let's continue on for now, these commands may be helpful later down the road.  The next directory <i>/etc/</i> gives us access to <i>/etc/passwd</i> which even gives us what looks like the hashes of all users, including root!</p>
+
+<p><i><b>Figure 1.2: Contents of /etc/passwd file</b></i>
+<br>
+<img src="/images/level1_2.png" />
+<br>
+From here we have 2 possible paths:</p>
+<ul>
+<li>Use a search engine to search for the hash and see if anything comes up</li>
+<li>Keep searching on the local machine</li>
+</ul>
+<p>As of writing this using a search engine only turns up 2 websites that clearly solutions or a forum trying to solve this same puzzle. Since its not a common hash type like MD5 lets go back to the local machine! Simply looking at someone elses password is just cheating :P</p>
+
+<p><br>
+<p>After looking through more directories we find that the tool <i>hashcat</i> is on the machine, lets run it and see what we need to do to crack the root password hash.  <i>Hashcat</i> wants only 1 input parameter, the hash. Lets try the root user account hash. SUCCESS!</p></p>
+<p><i><b>Figure 1.3: The Password to the root account is: gravity98</b></i>
+<br>
+<img src="/images/level1_3.png" /></p>
+<!-- ### Level 2 ### -->
+
+<p><br>
+<h2>Level 2:</h2></p>
+		</div> <!--/#entry-content-->
+	</div> <!--/#main-->
 </div>  <!--/#post--><div class="navigation">
 </div>
 		</div>

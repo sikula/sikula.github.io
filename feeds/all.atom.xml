@@ -1,2 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>TestBlog</title><link rel="alternate" href="https://sikula.github.io/"></link><link rel="self" href="https://sikula.github.io/feeds/all.atom.xml"></link><id>https://sikula.github.io/</id><updated>2016-12-26T00:00:00+01:00</updated><entry><title>First Entry</title><link rel="alternate" href="https://sikula.github.io/first-entry.html"></link><published>2016-12-26T00:00:00+01:00</published><author><name>Peter Sikula, Thomas Zuk</name></author><id>tag:sikula.github.io,2016-12-26:first-entry.html</id><summary type="html">&lt;h1&gt;Test Content&lt;/h1&gt;</summary></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>TestBlog</title><link rel="alternate" href="https://sikula.github.io/"></link><link rel="self" href="https://sikula.github.io/feeds/all.atom.xml"></link><id>https://sikula.github.io/</id><updated>2016-12-26T00:00:00+01:00</updated><entry><title>First Entry</title><link rel="alternate" href="https://sikula.github.io/first-entry.html"></link><published>2016-12-26T00:00:00+01:00</published><author><name>Peter Sikula, Thomas Zuk</name></author><id>tag:sikula.github.io,2016-12-26:first-entry.html</id><summary type="html">&lt;h1&gt;Test Content&lt;/h1&gt;</summary></entry><entry><title>The Hackers Sandbox: Destiny</title><link rel="alternate" href="https://sikula.github.io/the-hackers-sandbox-destiny.html"></link><published>2016-12-26T00:00:00+01:00</published><author><name>Peter Sikula, Thomas Zuk</name></author><id>tag:sikula.github.io,2016-12-26:the-hackers-sandbox-destiny.html</id><summary type="html">&lt;h3&gt;The Hackers Sandbox Walkthrough: Destiny (Default Mission Package)&lt;/h3&gt;
+
+&lt;p&gt;The Hackers Sandbox is a interactive hacking simulator. It is a standalone application that can be run on Windows, Linux and OSX that is used to emulate Virtual Machines. From their website: "It features an advanced and scriptable gaming engine which is extendable using Lua Script. You can create your own playable mission-packs to share with your friends or the community."
+&lt;br&gt;This walkthrough will cover the default mission pack called Destiny that comes with The Hackers Sandbox.&lt;/p&gt;
+
+&lt;p&gt;You find more about The Hackers Sandbox on its official website: &lt;a href src="http://www.flyingmonkeyarmy.com/"&gt;www.flyingmonkeyarmy.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- ### Level 1 ### --&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;h2&gt;Level 1: area6&lt;/h2&gt;
+&lt;p&gt;First step is straight forward, login with the credentials provided.&lt;/p&gt;
+Username = m101
+&lt;br&gt;
+Password = area6
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Using the &lt;i&gt;ls&lt;/i&gt; command we can see there is a file, using &lt;i&gt;cat welcome&lt;/i&gt; to view the contents of the file we learn the goal of this level is to gain root access.  Lets being by probing around and seeing which directories and file we have access to. On this machine there are 9 primary directories.&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;&lt;b&gt;Figure 1.1: Output of the command 'ls /'&lt;/b&gt;&lt;/i&gt;
+&lt;br&gt;
+&lt;img src="/images/level1_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Next lets go through each of the directories and any sub-directories and try and see the contents of any files or interesting commands.  The first directory &lt;i&gt;/bin&lt;/i&gt; contains 3 more commands, &lt;i&gt;nmap, wget, wwwlook&lt;/i&gt;.  Let's continue on for now, these commands may be helpful later down the road.  The next directory &lt;i&gt;/etc/&lt;/i&gt; gives us access to &lt;i&gt;/etc/passwd&lt;/i&gt; which even gives us what looks like the hashes of all users, including root!&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;&lt;b&gt;Figure 1.2: Contents of /etc/passwd file&lt;/b&gt;&lt;/i&gt;
+&lt;br&gt;
+&lt;img src="/images/level1_2.png" /&gt;
+&lt;br&gt;
+From here we have 2 possible paths:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a search engine to search for the hash and see if anything comes up&lt;/li&gt;
+&lt;li&gt;Keep searching on the local machine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As of writing this using a search engine only turns up 2 websites that clearly solutions or a forum trying to solve this same puzzle. Since its not a common hash type like MD5 lets go back to the local machine! Simply looking at someone elses password is just cheating :P&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;p&gt;After looking through more directories we find that the tool &lt;i&gt;hashcat&lt;/i&gt; is on the machine, lets run it and see what we need to do to crack the root password hash.  &lt;i&gt;Hashcat&lt;/i&gt; wants only 1 input parameter, the hash. Lets try the root user account hash. SUCCESS!&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;&lt;b&gt;Figure 1.3: The Password to the root account is: gravity98&lt;/b&gt;&lt;/i&gt;
+&lt;br&gt;
+&lt;img src="/images/level1_3.png" /&gt;&lt;/p&gt;
+&lt;!-- ### Level 2 ### --&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;h2&gt;Level 2:&lt;/h2&gt;&lt;/p&gt;</summary></entry></feed>
